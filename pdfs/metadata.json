@@ -1,0 +1,15 @@
+{
+  "horror.pdf": {
+    "title": "Classic Horror Films",
+    "description": "A list of classic horror movies from the 70s and 80s."
+  },
+  "action.pdf": {
+    "title": "Action Movie Hits",
+    "description": "Top action-packed movies of all time."
+  },
+  "comedy.pdf": {
+    "title": "Comedy Favorites",
+    "description": "Some of the funniest movies ever made."
+  }
+}
+
