@@ -84,7 +84,18 @@ function route(app) {
 
         // Validate PDF exists in pdfs folder
         if (!pdfValidation(name)) {
-            return res.status(404).send("PDF not found");
+            return res.status(404).send(`
+            <div style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
+                <h1 style="color: #e74c3c; font-size: 48px;">404</h1>
+                <h2 style="color: #2c3e50;">PDF Not Found</h2>
+                <p style="font-size: 18px; color: #7f8c8d;">The pdf you're looking for doesn't exist.</p>
+                <a href="/" 
+                    style="display: inline-block; margin-top: 20px; text-decoration: none; 
+                        background-color: #3498db; color: white; padding: 10px 20px; 
+                        border-radius: 5px; font-weight: bold;">
+                    Back to Home
+            </a>
+        </div>`);
         }
 
         const filePath = path.join(__dirname, '../pdfs', name);
@@ -95,7 +106,18 @@ function route(app) {
 
     // ---Handle 404 errors--- for routes that don’t exist
     app.use((req, res) => {
-        res.status(404).send("404 — Page not found");
+        res.status(404).send(`
+            <div style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
+                <h1 style="color: #e74c3c; font-size: 48px;">404</h1>
+                <h2 style="color: #2c3e50;">Page Not Found</h2>
+                <p style="font-size: 18px; color: #7f8c8d;">The page you're looking for doesn't exist.</p>
+                <a href="/" 
+                    style="display: inline-block; margin-top: 20px; text-decoration: none; 
+                        background-color: #3498db; color: white; padding: 10px 20px; 
+                        border-radius: 5px; font-weight: bold;">
+                    Back to Home
+            </a>
+        </div>`);
     });
 };
 
