@@ -6,7 +6,12 @@ This project is a simple PDF server built with Node.js and Express. It allows us
 - List all available PDFs in a designated folder  
 - Request a specific PDF file, with validation to prevent unauthorized access  
 
-The server includes built-in safety measures to prevent directory traversal attacks and ensure that only files in the PDF folder can be served.
+The server includes built-in safety measures to prevent directory traversal attacks and ensure that only files in the PDF folder can be served. This server uses a configured domain with an SSL certificate.
+
+## Domain and HTTPS 
+- **Domain** – https://pdfinfoserver.org
+- HTTPS enabled via Certbot (Let's Encrypt)
+- HTTP traffic redirects to HTTPS
 
 ---
 
@@ -17,8 +22,9 @@ The main files and modules include:
 - **pdfs/** – Folder containing PDF files to be served
 - **node_modules/** – Node dependencies (ignored in git)
 - **.gitignore** – Ignores node modules, temporary files, and other unwanted files
+- **modules/** - PDF document management
 
-Modules/Functionality:
+Modules:
 
 1. **PDF Discovery**  
    - Scans the PDF folder and lists all available PDF files.
@@ -48,10 +54,11 @@ Modules/Functionality:
   lsof -i :5050  
   kill -9 <PID>
 
-4. **Access the Website**
+4. **Access the Website**  
 Once the server is running, open your browser and go to:
 http://pdfinfoserver.org/  
 (The server should automatically redirect to https://pdfinfoserver.org/)
+- Website shows secure connection and valid certificate
 
 The homepage should show a welcome message with navigation to the PDFs page.
 The pdfs page uses a json metadata file to present available pdfs.
