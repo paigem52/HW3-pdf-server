@@ -48,9 +48,10 @@ Modules/Functionality:
   lsof -i :5050  
   kill -9 <PID>
 
-4. Access the Website
-Once the server is running, open your browser and go to:  
-ADD DOMAIN LINK
+4. **Access the Website**
+Once the server is running, open your browser and go to:
+http://pdfinfoserver.org/  
+(The server should automatically redirect to https://pdfinfoserver.org/)
 
 The homepage should show a welcome message with navigation to the PDFs page.
 The pdfs page uses a json metadata file to present available pdfs.
