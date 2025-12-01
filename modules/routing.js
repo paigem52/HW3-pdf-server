@@ -5,11 +5,22 @@
 // Handle 404 errors for routes that don’t exist
 
 const path = require('path');
+const fs = require('fs');
+
 //Discover module (utility)
 const pdfDiscovery = require('./pdfDiscovery');
 //Validation module
-//const pdfValidation = require('./pdfValidation');
+const pdfValidation = require('./pdfValidation');
 
+const metadataPath = path.join(__dirname, '../pdfs/metadata.json');
+let pdfMetadata = {};
+
+try {
+    const data = fs.readFileSync(metadataPath, 'utf-8');
+    pdfMetadata = JSON.parse(data);
+} catch (err) {
+    console.error("Error loading PDF metadata:", err);
+}
 
 function route(app) {
   // Homepage route
@@ -37,8 +48,10 @@ function route(app) {
             html += `<li>No PDFs available</li>`;
         } else {
             pdfList.forEach(pdf => {
+                const meta = pdfMetadata[pdf] || { title: pdf, description: '' };
                 html += `<li>
-                    <a href="/pdfs/${pdf}" target="_blank">${pdf}</a>
+                    <a href="/pdfs/${pdf}" target="_blank">${meta.title || pdf}</a>
+                    <p>${meta.description || ''}</p>
                 </li>`;
             });
         }
@@ -54,7 +67,7 @@ function route(app) {
         const name = req.params.name;
 
         // Validate PDF exists
-        if (!app.locals.pdfList.includes(name)) {
+        if (!pdfValidation(name)) {
             return res.status(404).send("PDF not found");
         }
 

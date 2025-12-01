@@ -2,11 +2,16 @@ const express = require('express');
 const app = express();
 const PORT = 5050;
 
+// Utility functions
+const pdfDiscovery = require('./modules/pdfDiscovery');
+const pdfValidation = require('./modules/pdfValidation');
+
+
+//Routing
 const Routing = require('./modules/routing');
-//console.log(routing(app)); would produce output but undefined right now?
 Routing(app);
 
 //Start server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on http://0.0.0.0:${PORT}`);
 });
