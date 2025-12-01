@@ -36,20 +36,20 @@ Modules/Functionality:
 
 ## How to Run
 
-1. **Clone the repository**
+1. **Clone the repository**  
    git clone git@github.com:paigem52/HW3-pdf-server
 
-2. **Navigate into the cloned repository**
+2. **Navigate into the cloned repository**  
    cd HW3-pdf-server
 
-3. **Start server.js**
+3. **Start server.js**  
    node server.js
-  - Important: make sure there are no PIDs running. If so, kill them.
+  - Important: make sure there are no PIDs running. If so, kill them.  
   lsof -i :5050  
   kill -9 <PID>
 
 4. Access the Website
-Once the server is running, open your browser and go to:
+Once the server is running, open your browser and go to:  
 ADD DOMAIN LINK
 
 The homepage should show a welcome message with navigation to the PDFs page.
